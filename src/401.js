@@ -26,5 +26,5 @@ devise.provider('AuthIntercept', function AuthInterceptProvider() {
         };
     };
 }).config(function($httpProvider) {
-    $httpProvider.interceptors.push('AuthIntercept');
+    //$httpProvider.interceptors.push('AuthIntercept');
 });
