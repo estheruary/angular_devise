@@ -15,7 +15,10 @@ devise.provider('AuthIntercept', function AuthInterceptProvider() {
         return {
             responseError: function(response) {
                 // Determine if the response is specifically disabling the interceptor.
-                var intercept = response.config.interceptAuth;
+                var intercept = false;
+                if ('config' in response && 'interceptAuth' in response.config) {
+                    intercept = response.config.interceptAuth;
+                }
                 intercept = !!intercept || (interceptAuth && intercept === void 0);
 
                 if (intercept && response.status === 401) {
